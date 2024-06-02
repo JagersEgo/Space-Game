@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1vancbeti4qv"]
+
+[ext_resource type="Script" path="res://Characters/Mobs/Mob A/mob.gd" id="1_ylveg"]
+[ext_resource type="Texture2D" uid="uid://sbn3ve8sm8t7" path="res://Characters/Mobs/Mob B/enemy_C.png" id="2_q0ive"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0606"]
+radius = 47.0956
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gp50"]
+size = Vector2(27, 90.6731)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_ylveg")
+
+[node name="EnemyB" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.227451, 0.231373, 1)
+rotation = 1.5708
+texture = ExtResource("2_q0ive")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 32)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_s0606")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -33)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_s0606")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.5, 0.336531)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_8gp50")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+rotation = -3.14159
+shape = SubResource("CircleShape2D_s0606")

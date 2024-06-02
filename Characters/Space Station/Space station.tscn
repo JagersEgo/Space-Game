@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxefkwmex808f"]
+
+[ext_resource type="Texture2D" uid="uid://c6jithhwvrw63" path="res://Characters/Space Station/station_C.png" id="1_qbe72"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rognc"]
+size = Vector2(122.329, 52.3259)
+
+[node name="Space Station" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 7
+mass = 0.66
+gravity_scale = 0.0
+
+[node name="StationC" type="Sprite2D" parent="."]
+texture = ExtResource("1_qbe72")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -0.785398
+shape = SubResource("RectangleShape2D_rognc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0.749998, 0.749998)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_rognc")

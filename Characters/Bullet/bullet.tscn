@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://b14fvwnvpg7j4"]
+
+[ext_resource type="Script" path="res://Characters/Bullet/bullet.gd" id="1_7p61f"]
+[ext_resource type="Texture2D" uid="uid://d4mcgk5bcql38" path="res://Characters/Bullet/spaceMissiles_007.png" id="1_fatu8"]
+[ext_resource type="Texture2D" uid="uid://c7klnab1flvlb" path="res://Characters/Bullet/star_tiny.png" id="3_bmsll"]
+[ext_resource type="Texture2D" uid="uid://c6o0j7axwur" path="res://Characters/Bullet/shooting.png" id="4_61sfo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a7yux"]
+radius = 20.0
+height = 40.0
+
+[node name="Area2D" type="Area2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_7p61f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_a7yux")
+
+[node name="SpaceMissiles007" type="Sprite2D" parent="."]
+visible = false
+rotation = 1.5708
+texture = ExtResource("1_fatu8")
+
+[node name="StarTiny" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -1)
+rotation = 0.785398
+scale = Vector2(1, 1)
+texture = ExtResource("3_bmsll")
+
+[node name="Shooting" type="Sprite2D" parent="."]
+position = Vector2(-13, -1)
+rotation = -3.14159
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("4_61sfo")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

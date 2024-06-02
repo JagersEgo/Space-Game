@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkuqks878wqlf"]
+
+[ext_resource type="Script" path="res://survivor game.gd" id="1_dc427"]
+[ext_resource type="PackedScene" uid="uid://bm1w0g3hq78uj" path="res://Characters/Player/player.tscn" id="1_s00vo"]
+[ext_resource type="PackedScene" uid="uid://c3e61ghnrkhim" path="res://Characters/Meteor/Meteor.tscn" id="2_8d7cu"]
+[ext_resource type="PackedScene" uid="uid://cxefkwmex808f" path="res://Characters/Space Station/Space station.tscn" id="3_lscd2"]
+[ext_resource type="PackedScene" uid="uid://q36a1o1bt50m" path="res://Characters/Rocket/rocket.tscn" id="5_o0ji5"]
+
+[sub_resource type="Curve2D" id="Curve2D_q0h2c"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -230, 844, 0, 0, 0, 0, 1336, 827, 0, 0, 0, 0, 1307, -168, 0, 0, 0, 0, -206, -161, 0, 0, 0, 0, -230, 844)
+}
+point_count = 5
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_dc427")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -43
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1166.0
+offset_bottom = 660.0
+color = Color(0.0646965, 0.0646965, 0.0646965, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_s00vo")]
+position = Vector2(592, 334)
+
+[node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2(-592, -334)
+curve = SubResource("Curve2D_q0h2c")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-230, 844)
+rotation = -0.0108553
+
+[node name="Meteor" parent="." instance=ExtResource("2_8d7cu")]
+position = Vector2(224, 165)
+
+[node name="Meteor2" parent="." instance=ExtResource("2_8d7cu")]
+position = Vector2(199, 288)
+
+[node name="Meteor3" parent="." instance=ExtResource("2_8d7cu")]
+position = Vector2(839, 591)
+
+[node name="Meteor4" parent="." instance=ExtResource("2_8d7cu")]
+position = Vector2(1143, 40)
+
+[node name="Meteor5" parent="." instance=ExtResource("2_8d7cu")]
+position = Vector2(1076, 506)
+
+[node name="Meteor6" parent="." instance=ExtResource("2_8d7cu")]
+position = Vector2(868, 89)
+
+[node name="Meteor7" parent="." instance=ExtResource("2_8d7cu")]
+position = Vector2(359, 586)
+
+[node name="Space Station" parent="." instance=ExtResource("3_lscd2")]
+position = Vector2(210, 556)
+
+[node name="Meteor8" parent="." instance=ExtResource("2_8d7cu")]
+position = Vector2(1, 582)
+
+[node name="Meteor9" parent="." instance=ExtResource("2_8d7cu")]
+position = Vector2(-31, 394)
+
+[node name="Meteor10" parent="." instance=ExtResource("2_8d7cu")]
+position = Vector2(288, 699)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="RigidBody2D" parent="." instance=ExtResource("5_o0ji5")]
+position = Vector2(861, 485)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
